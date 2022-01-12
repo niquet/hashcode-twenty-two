@@ -18,3 +18,21 @@ if __name__ == '__main__':
     print(json.dumps(clients, indent=4, sort_keys=False))
 
     print(json.dumps(list(ingredients), indent=4, sort_keys=False))
+
+    liste = []
+
+    pointer = 0
+
+    for i in range(C):
+        if i == 0:
+            akku = [clients.get(0).__getitem__(1)]
+            liste.append(akku)
+            pointer+=1
+            liste[pointer-1].append(clients.get(i).__getitem__(0))
+        elif i != 0 and any(clients.get(i).__getitem__(1) in j for j in liste):
+            liste[pointer-1].append(clients.get(i).__getitem__(0))
+        else:
+            akku = [clients.get(i).__getitem__(1)]
+            liste.append(akku)
+            pointer+=1
+    print(liste)
